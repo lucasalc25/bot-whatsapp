@@ -7,7 +7,7 @@ import numpy as np
 
 def abrir_whatsapp():
     # Pressionar Windows para abrir a conversa
-    pyautogui.press('win')
+    pyautogui.press('win')  
     time.sleep(1)
     
     # Usar o pyautogui para digitar whatsapp
@@ -57,55 +57,50 @@ def enviar_mensagens(contatos):
         contato = contato[:2] + contato[3:]  # Remove o índice 2 (que é o terceiro número)
         
         pyautogui.hotkey('ctrl','f')
-        time.sleep(1.5)
+        time.sleep(1)
         
         # Usar o pyautogui para digitar o número de telefone do contato
         pyautogui.write(f'{contato}')
-        time.sleep(1.5)
+        time.sleep(1)   
         
         possui_whatsapp = verifica_existencia()
-        time.sleep(2)
+        time.sleep(1)
         
         if possui_whatsapp:
-            # Clicar no botão de alternar
-            pyautogui.press('tab')  
-            time.sleep(1.5)
+             # Clica no contato encontrado
+            pyautogui.click(244, 191) 
+            time.sleep(1)
             
-            # Pressionar Enter para abrir a conversa
-            pyautogui.press('enter')
-            time.sleep(1.5)
+            # Clica no botão anexar
+            pyautogui.click(497, 693)
+            time.sleep(1)
             
-            for i in range(1, 17):
-                # Clicar no botão de alternar
-                pyautogui.press('tab')            
-                
-            # Pressionar Enter para abrir a conversa
+            # Alternar para abrir fotos
+            pyautogui.press('tab')
+            time.sleep(1) 
             pyautogui.press('enter')
-            time.sleep(1.5)
-            
-            # Pressionar Enter para abrir a conversa
-            pyautogui.press('enter')
-            time.sleep(1.5)          
+            time.sleep(1)          
 
             # Clicar para anexar a imagem
-            pyautogui.write(r'c:\Users\Dinamica\Documents\msg_bot\imagem.png')  # Caminho completo da imagem
-            time.sleep(1.5)
+            pyautogui.write(r'C:\Users\Suporte\Documents\GitHub\bot-whatsapp\imagem.png')  # Caminho completo da imagem
+            time.sleep(1)
             
             pyautogui.press('enter')
-            time.sleep(1.5)
+            time.sleep(1)
+
             
             for i in range(1, 5):
                 # Clicar no botão de alternar
                 pyautogui.press('tab')   
             
-            time.sleep(1.5)
+            time.sleep(1)
 
             # Pressionar Enter para enviar a imagem
             pyautogui.press('enter')
             
         else:
             pyautogui.hotkey('ctrl','a')
-            time.sleep(1.5)
+            time.sleep(1)
 
             # Pressionar Enter para enviar a imagem
             pyautogui.press('backspace')
@@ -130,7 +125,7 @@ print(f"Contatos encontrados: {contatos}")
 abrir_whatsapp()
 
 # Esperar o WhatsApp abrir
-time.sleep(3)
+time.sleep(2)
 
 # Enviar a imagem para os contatos
 enviar_mensagens(contatos)
